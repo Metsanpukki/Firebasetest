@@ -19,7 +19,6 @@ public class NotificationService extends FirebaseMessagingService {
     public void onNewToken(String token) {
         super.onNewToken(token);
         Log.e("newToken", token);
-//Add your token in your sharepreferences.
         getSharedPreferences("_", MODE_PRIVATE).edit().putString("fcm_token", token).apply();
     }
 
@@ -29,7 +28,7 @@ public class NotificationService extends FirebaseMessagingService {
 
 /*
 
-    //Ottaa kiinni ja laukausee MainActivityn, vaikka se on taustalla!
+
     @Override
     public void onCreate() {
         super.onCreate();

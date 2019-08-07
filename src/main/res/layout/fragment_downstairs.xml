@@ -23,7 +23,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:textSize="18sp"
-                android:text="TextView" />
+                android:text="Temperature" />
 
 
             <TextView
@@ -33,7 +33,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:textSize="18sp"
-                android:text="TextView" />
+                android:text="Pressure" />
 
             <TextView
                 android:id="@+id/downstairsAltitudeTextView"
@@ -42,7 +42,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:textSize="18sp"
-                android:text="TextView" />
+                android:text="Altitude" />
         </LinearLayout>
 
         <TextView

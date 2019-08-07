@@ -11,8 +11,6 @@ import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
-
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -33,6 +31,9 @@ public class DownstairsFragment extends Fragment {
     private Switch lightsFirstSwitch;
     private Switch lightsSecondSwitch;
     private Switch lightsThirdSwitch;
+    private TextView temperatureTextView;
+    private TextView pressureTextView;
+    private TextView altitudeTextView;
 
 
     public DownstairsFragment() {
@@ -56,9 +57,9 @@ public class DownstairsFragment extends Fragment {
         lightsSecondSwitch = rootView.findViewById(R.id.downstairsLightSwitch2);
         lightsThirdSwitch = rootView.findViewById(R.id.downstairsLightSwitch3);
 
-        final TextView temperatureTextView = rootView.findViewById(R.id.downstairsTemperatureTextView);
-        final TextView pressureTextView = rootView.findViewById(R.id.downstairsPressureTextView);
-        final TextView altitudeTextView = rootView.findViewById(R.id.downstairsAltitudeTextView);
+        temperatureTextView = rootView.findViewById(R.id.downstairsTemperatureTextView);
+        pressureTextView = rootView.findViewById(R.id.downstairsPressureTextView);
+        altitudeTextView = rootView.findViewById(R.id.downstairsAltitudeTextView);
 
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference("downstairs_sensor_bmp280");
@@ -68,9 +69,9 @@ public class DownstairsFragment extends Fragment {
                 JSONObject sensorData;
                 try {
                     sensorData = new JSONObject(dataSnapshot.getValue().toString());
-                    temperatureTextView.setText("Temperature: " + sensorData.getString("temperature") + "°c");
-                    pressureTextView.setText("Pressure: " +sensorData.get("pressure") + " hPa");
-                    altitudeTextView.setText("Altitude: " +sensorData.get("altitude") + " m");
+                    temperatureTextView.setText(String.format("Temperature: %s%s", sensorData.getString("temperature"), "°c"));
+                    pressureTextView.setText(String.format("Pressure: %s%s", sensorData.getString("pressure"), " hPa"));
+                    altitudeTextView.setText(String.format("Altitude: %s%s", sensorData.getString("altitude"), " m"));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -124,7 +125,7 @@ public class DownstairsFragment extends Fragment {
         lightsFirstSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                lightsRef.child("light0").setValue((isChecked==true) ? 1 : 0);
+                lightsRef.child("light0").setValue((isChecked) ? 1 : 0);
 
             }
         });
@@ -132,7 +133,7 @@ public class DownstairsFragment extends Fragment {
         lightsSecondSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                lightsRef.child("light1").setValue((isChecked==true) ? 1 : 0);
+                lightsRef.child("light1").setValue((isChecked) ? 1 : 0);
 
             }
         });
@@ -140,7 +141,7 @@ public class DownstairsFragment extends Fragment {
         lightsThirdSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                lightsRef.child("light2").setValue((isChecked==true) ? 1 : 0);
+                lightsRef.child("light2").setValue((isChecked) ? 1 : 0);
 
             }
         });

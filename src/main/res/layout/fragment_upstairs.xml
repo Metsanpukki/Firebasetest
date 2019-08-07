@@ -17,7 +17,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textSize="18sp"
-            android:text="TextView" />
+            android:text="Temperature: " />
 
         <TextView
             android:id="@+id/upstairsHumidityTextView"
@@ -25,7 +25,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textSize="18sp"
-            android:text="TextView" />
+            android:text="Humidity: " />
 
         <TextView
             android:id="@+id/upstairsPressureTextView"
@@ -33,7 +33,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textSize="18sp"
-            android:text="TextView" />
+            android:text="Pressure: " />
 
         <TextView
             android:id="@+id/upstairsAltitudeTextView"
@@ -41,7 +41,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textSize="18sp"
-            android:text="TextView" />
+            android:text="Altitude: " />
     </LinearLayout>
 
 </FrameLayout>

@@ -15,12 +15,6 @@ public class DashboardActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private ViewPagerAdapter viewPagerAdapter;
-    private int[] tabIcons = {
-            R.drawable.ic_tab_upstairs,
-            R.drawable.ic_tab_upstairs,
-            R.drawable.ic_tab_upstairs,
-            R.drawable.ic_tab_upstairs
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +29,7 @@ public class DashboardActivity extends AppCompatActivity {
         viewPagerAdapter.addFragment(new UpstairsFragment(), "Upstairs");
         viewPagerAdapter.addFragment(new DownstairsFragment(), "Downstairs");
         viewPagerAdapter.addFragment(new StreamFragment(),"RTSP");
+        viewPagerAdapter.addFragment(new AlarmFragment(),"Alarm");
 
         viewPager.setOffscreenPageLimit(1); //fragments cache
         viewPager.setAdapter(viewPagerAdapter);
@@ -58,10 +53,16 @@ public class DashboardActivity extends AppCompatActivity {
         tabLayout.getTabAt(1).setCustomView(tabTwo);
 
         TextView tabThree = (TextView) LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
-        tabThree.setText("RTSP!");
+        tabThree.setText("RTSP");
         tabThree.setGravity(Gravity.CENTER);
         tabThree.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_tab_downstairs, 0, 0);
         tabLayout.getTabAt(2).setCustomView(tabThree);
+
+        TextView tabFour = (TextView) LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
+        tabFour.setText("Alarm");
+        tabFour.setGravity(Gravity.CENTER);
+        tabFour.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_tab_downstairs, 0, 0);
+        tabLayout.getTabAt(3).setCustomView(tabFour);
 
 
     }

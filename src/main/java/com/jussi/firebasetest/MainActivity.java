@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 /*
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);*/
-                //TESTING
+                //TEST
                 Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
                 startActivity(intent);
             }
